@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "731660884889",
+    "project_id": "legendary-funicular",
+    "storage_bucket": "legendary-funicular.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731660884889:android:212a79e522241cb6141108",
+        "android_client_info": {
+          "package_name": "com.ryan46.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-lxCTQ2EmbMHWblScAXBLRX6e7G80mhI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

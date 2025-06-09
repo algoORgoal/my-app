@@ -7,6 +7,7 @@ import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { crash, getCrashlytics } from "@react-native-firebase/crashlytics";
 
 export default function HomeScreen() {
   const count = useAppSelector((state) => state.counter.value);
@@ -29,6 +30,12 @@ export default function HomeScreen() {
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <Button
+          title="Crash"
+          onPress={() => {
+            crash(getCrashlytics());
+          }}
+        />
         <ThemedText>
           Edit{" "}
           <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}

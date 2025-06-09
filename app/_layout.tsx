@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import { store } from "../store";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
+import CrashlyticsProvider from "./crashlytics-provider";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -24,14 +25,18 @@ export default function RootLayout() {
   }
 
   return (
-    <Provider store={store}>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-        <StatusBar style="auto" />
-      </ThemeProvider>
-    </Provider>
+    <CrashlyticsProvider>
+      <Provider store={store}>
+        <ThemeProvider
+          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+        >
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+          <StatusBar style="auto" />
+        </ThemeProvider>
+      </Provider>
+    </CrashlyticsProvider>
   );
 }
