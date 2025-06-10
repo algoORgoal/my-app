@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 import { store } from "../store";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
-import CrashlyticsProvider from "./crashlytics-provider";
+import MockingProvider from "@/mocks/mocking-provider";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -25,7 +25,7 @@ export default function RootLayout() {
   }
 
   return (
-    <CrashlyticsProvider>
+    <MockingProvider>
       <Provider store={store}>
         <ThemeProvider
           value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
@@ -37,6 +37,6 @@ export default function RootLayout() {
           <StatusBar style="auto" />
         </ThemeProvider>
       </Provider>
-    </CrashlyticsProvider>
+    </MockingProvider>
   );
 }

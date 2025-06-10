@@ -8,11 +8,22 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import crashlytics from "@react-native-firebase/crashlytics";
+import { useEffect, useState } from "react";
 
 export default function HomeScreen() {
   const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
   const { data, error, isLoading } = useGetTestQuery();
+
+  const [users, setUsers] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch("https://api.example/user")
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data.users);
+      });
+  }, []);
 
   return (
     <ParallaxScrollView
@@ -48,6 +59,9 @@ export default function HomeScreen() {
             })}
           </ThemedText>{" "}
           to open developer tools.
+          {users.map((user, index) => (
+            <ThemedText key={index}>{user}</ThemedText>
+          ))}
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
